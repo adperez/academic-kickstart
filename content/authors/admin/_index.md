@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Amanda Danielle Perez
+title: Amanda D. Perez
 
 # Username (this should match the folder name)
 authors:
@@ -14,7 +14,7 @@ role: Ph.D. Candidate and Professor of Psychology
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
+- name: UC Berkeley & DVC
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
@@ -44,7 +44,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
+  link: '#contact'  # For a direct email link, use "mailto:adp@berkeley.edu".
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/GeorgeCushen
