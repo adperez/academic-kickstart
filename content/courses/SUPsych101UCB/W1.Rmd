@@ -1,0 +1,340 @@
+---
+title: "Why Do We Need Statistics?"
+date: "Week 1"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+css: custom.css
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+p{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+ li{ /* Normal  */
+      font-size: 24px;
+      line-height: 1.2;
+       padding: 5px 0px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 38px;
+
+}
+h1 { /* Header 1 */
+  font-size: 48px;
+
+}
+h2 { /* Header 2 */
+    font-size: 36px;
+
+}
+h3 { /* Header 3 */
+  font-size: 30px;
+
+
+}
+
+h4 { /* Header 4 */
+  font-size: 28px;
+
+
+}
+
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 18px;
+}
+</style>
+
+```{r setup, echo=FALSE, cache=FALSE, warning = F, message = F}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+## Types of Data Analysis
+
+**Quantitative Methods: ** Testing theories using numbers  
+
+<ul>
+  <li>Please rate the followng question on a scale from 1-7, 1 meaning not at all and 7 meaning extremely 
+    <ul><li> *How happy are you?* </li></ul></li> </ul>
+    
+ <ul> <li>Please rate the following statement on a 1-7 scale, 1 meaning stronly disagree and 7 meaning strongly agree
+  <ul><li>*I love Animal Corssing*</li></ul></li>
+</ul>
+
+
+**Qualitative Methods: ** Testing theories using language
+
+*  Magazine articles/Interviews
+*  Conversations
+*  Newspapers
+*  Media broadcasts
+
+## The Research Process
+![Figure 1.2 DSUR](images/week1/image1.png)
+
+## Initial Observation
+Find something that needs explaining
+
+* Observe the real world
+* Read other research  
+  
+Test the concept: collect data
+
+* Collect data to see whether your hunch is correct
+* To do this you need to define variables
+
+## Generating and Testing Theories
+
+![Figure 1.2 DSUR](images/week1/image2.png)
+
+**Theory:** A hypothesized general principle or set of principles that explains known findings about a topic and from which new hypotheses can be generated.  
+
+* Social Learning Theory: People learn by observing others
+
+**Hypothesis:** A prediction from a theory.
+
+* The YouTube influencer is a good case in point. If you like a particular influencer you may well want to model your behavior after theirs. If they enjoys a certain brand of shampoo, then you may well imitate them by purchasing that brand.
+* The number of people turning up for a Big Brother audition that have narcissistic personality disorder will be higher than the general level (1%) in the population.
+
+![Table 1.1 DSUR](images/week1/image3.png)
+
+**Falsification:** The act of disproving a theory or hypothesis.
+
+## Data Collection: What to Measure?
+![Figure 1.2 DSUR](images/week1/image4.png)
+
+**Hypothesis:** Coca-Cola kills sperm
+
+**Independent Variable:** The proposed cause
+
+* Statistics: A predictor variable
+* A manipulated variable (in experiments)
+* *Coca-Cola* in the hypothesis above
+
+**Dependent Variable:** The proposed effect
+
+* Statitics: An outcome variable
+* Measured not manipulated (in experiments)
+* *Sperm* in the hypothesis above
+
+## Levels of Measurement
+**Categorical:** entities are divided into distinct categories
+
+* Binary variable: There are only two categories
+  + e.g. dead or alive.
+  
+* Nominal variable: There are more than two categories 
+  + e.g. whether someone is an omnivore, vegetarian, vegan, or fruitarian.
+  
+* Ordinal variable: The same as a nominal variable but the categories have a logical order
+  + e.g. whether people got a fail, a pass, a merit or a distinction in their exam.
+  
+**Continuous:** entities get a distinct score
+
+* Interval variable: Equal intervals on the variable represent equal differences in the property being measured
+  + e.g. the difference between 6 and 8 is equivalent to the difference between 13 and 15.
+* Ratio variable: The same as an interval variable, but the ratios of scores on the scale must also make sense
+  + e.g. a score of 16 on an anxiety scale means that the person is, in reality, twice as anxious as someone scoring 8.
+  
+## Measurement error
+
+**Measurement error:** The discrepancy between the actual value we’re trying to measure, and the number we use to represent that value.  
+
+Example:  
+You (in reality) weigh 80 kg.  
+You stand on your bathroom scales and they say 83 kg.  
+The measurement error is 3 kg.  
+
+## Validity
+
+**Validity: ** Whether an instrument measures what it set out to measure.  
+
+**Content validity:** Evidence that the content of a test corresponds to the content of the construct it was designed to cover  
+
+**Ecological validity:** Evidence that the results of a study, experiment or test can be applied, and allow inferences, to real-world conditions
+
+## Reliability
+
+**Reliability:** The ability of the measure to produce the same results under the same conditions.  
+
+**Test–Retest Reliability:** The ability of a measure to produce consistent results when the same entities are tested at two different points in time.
+
+## How to Measure
+
+**Correlational research:** Observing what naturally goes on in the world without directly interfering with it.  
+
+**Cross-sectional research:** This term implies that data come from people at different age points, with different people representing each age point.  
+
+**Experimental research:** One or more variable is systematically manipulated to see their effect (alone or in combination) on an outcome variable. *Statements can be made about cause and effect*
+
+## Experimental Research Methods
+Cause and Effect (Hume, 1748) require 3 components of research design: 
+
+1. Cause and effect must occur close together in time (contiguity)
+2. The cause must occur before an effect does (temporal precedence)
+3. Address confounding varables  
+
+**Confounding variables:** A variable (that we may or may not have measured) other than the predictor variables that potentially affects an outcome variable
+
+* e.g. the relationship between breast implants and suicide is confounded by self-esteem.
+Ruling out confounds (Mill, 1865)  
+
+
+**Control conditions:** The cause is absent. An effect should be present when the cause is present and that when the cause is absent the effect should be absent also.
+
+* e.g. Coffee increases energy. Coffee is the cause of increased energy. If you do not drink your morning coffee (cause is absent) your energy should not increase
+
+## Methods of Data Collection
+
+**Between-group/between-subject/independent:** Different entities (participants) in experimental conditions
+
+* e.g. Bring 100 people into the lab individually. You give 50 coffee to drink and 50 water to drink. You then measure their heart rate
+
+**Repeated-measures (within-subject):** The same entities (participants) take part in all experimental conditions.
+
+* e.g. Bring 50 people into the lab individually. You them all coffee to drink and measure their heart rate. Then, you give the SAME 50 people water to drink and then measure their heart rate
+* Economical
+* Practice effects
+* Fatigue
+
+## Types of Variation
+
+**Systematic Variation:** Differences in performance created by a specific experimental manipulation
+
+**Unsystematic Variation:** Differences in performance created by unknown factors
+
+* Age, gender, IQ, time of day, measurement error, etc.
+
+**Randomization:** Minimizes unsystematic variation
+
+## Analyzing Data
+
+![Figure 1.2 DSUR](images/week1/image5.png)
+
+### Histograms
+
+**Histograms:** Visualize Frequency Distributions. A graph plotting values of observations on the horizontal axis, with a bar showing how many times each value occurred in the data set.  
+
+**The ‘Normal’ Distribution:** Bell-shaped & Symmetrical around the center
+
+![Figure 1.3 DSUR](images/week1/image6.png)
+
+### Properties of Frequency Distributions
+
+**Skew:** The symmetry of the distribution  
+
+*Positive skew* = scores bunched at low values with the tail pointing to high values  
+
+*Negative skew* = scores bunched at high values with the tail pointing to low values  
+
+![Figure 1.4 DSUR](images/week1/image7.png)
+
+**Kurtosis:** The ‘heaviness’ of the tails  
+
+*Leptokurtic* = heavy tails  
+
+*Platykurtic* = light tails
+
+![Figure 1.5 DSUR](images/week1/image8.png)
+
+## Central Tendency
+
+### Central tendency: The Mode
+
+**Mode:** The most frequent score  
+
+**Bimodal:** Having two modes 
+
+![Figure 1.6 DSUR](images/week1/image9.png)
+
+**Multimodal:** Having several modes
+
+### Central Tendency: The Median
+
+**Median:** The middle score when scores are ordered  
+
+Example: Number of friends of 11 Facebook users
+
+![](images/week1/image10.png)
+
+### Central Tendency: The Mean
+
+**Mean:** The sum of scores divided by the number of scores  
+
+Example: Number of friends of 11 Facebook users
+
+![](images/week1/image11.png)
+
+## The Dispersion
+
+### The Dispersion: Range 
+
+**The Range:** The smallest score subtracted from the largest  
+
+Example  
+Number of friends of 11 Facebook users from lowest to highest  
+22, 40, 53, 57, 93, 98, 103, 108, 116, 121, 252  
+Range = 252 – 22 = 230  
+*Very biased by outliers*  
+
+### The Dispersion: The Interquartile range
+
+**Quartiles:** The three values that split the sorted data into four equal parts  
+
+*Second quartile* = median.
+*Lower quartile*  = median of lower half of the data.
+*Upper quartile* = median of upper half of the data.
+
+![Figure 1.7 DSUR](images/week1/image12.png)
+
+## Going beyond the data: z-scores
+
+**z-scores:** Standardizing a score with respect to the other scores in the group.
+Expresses a score in terms of how many standard deviations it is away from the mean.
+The distribution of z-scores has a mean of 0 and SD = 1.
+![](images/week1/image13.png)
+
+### Properties of z-scores  
+
+* 1.96 cuts off the top 2.5% of the distribution
+* −1.96 cuts off the bottom 2.5% of the distribution
+  + As such, 95% of z-scores lie between −1.96 and 1.96
+* 99% of z-scores lie between −2.58 and 2.58
+* 99.9% of them lie between −3.29 and 3.29
+
+## Types of Hypotheses
+
+**Null hypothesis, H0:** There is no effect  
+
+E.g. Big Brother contestants and members of the public will not differ in their scores on personality disorder questionnaires  
+
+**The alternative hypothesis, H1:** Aka the experimental hypothesis  
+
+E.g. Big Brother contestants will score higher on personality disorder questionnaires than members of the public
+
+
+

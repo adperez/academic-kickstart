@@ -1,0 +1,361 @@
+---
+title: "Linear Regression: Categorical IVs"
+date: "Week 5"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+css: custom.css
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+p{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+ li{ /* Normal  */
+      font-size: 24px;
+      line-height: 1.2;
+       padding: 5px 0px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 38px;
+
+}
+h1 { /* Header 1 */
+  font-size: 48px;
+
+}
+h2 { /* Header 2 */
+    font-size: 36px;
+
+}
+h3 { /* Header 3 */
+  font-size: 30px;
+
+
+}
+
+h4 { /* Header 4 */
+  font-size: 28px;
+
+
+}
+
+code.r{ /* Code block */
+    font-size: 40px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 18px;
+}
+</style>
+
+```{r setup, echo=FALSE, cache=FALSE, warning = F, message = F}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+```{r, echo = F,cache=FALSE, warning = F, message = F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts=list(width.cutoff=70),tidy=TRUE)
+
+```
+
+## Aims
+
+For categorical data:  
+
+Understand linear regression with one predictor and two predictors  
+
+Know how to do regression using R  
+
+Interpret a regression model  
+
+Understand the difference between dummy coding and simple coding  
+
+Interpret and plot interactions
+
+**Note: Your final project will have 2 categorical IVs, so this is a really important lesson!**
+
+## What is Regression?
+
+A way of predicting the value of one variable from another
+
+* It is a hypothetical model of the relationship between two variables
+* The model used is a linear one
+* Therefore, we describe the relationship using the equation of a straight line  
+
+This week focuses on linear regression with **categorical predictors (IVs)**. This means our predictors (IVs) will be categories (e.g. male vs female, cat vs dog, vegan vs carnivore).  
+
+## Describing a Straight Line
+![](images/week4/image1.png)
+
+
+**b~0~:** Represents the **Intercept** (value of Y when X = 0)
+
+* Point at which the regression line crosses the Y-axis (ordinate) 
+* **For categorical IVs, the intercept has a different interpretation. It is still the value of the DV when all = 0, but 0 has a new meaning (more on that later)**
+
+
+**b~i~:** Regression coefficient for the predictor
+
+* **Slope** of the regression line
+  + Direction/strength of relationship
+  + **For categorical IVs, the slope has a different interpretation. It is the adjustment to the intercept we make depending on our level (more on that later)**
+  
+
+## Testing the Model: R^2^
+
+**R^2^:** The proportion of variance accounted for by the regression model, aka the Pearson Correlation Coefficient Squared  
+
+![](images/week4/image7.png)
+
+## Regression: Single Categorical Predictor
+
+A graduate student was interested in whether or not the "beer goggles" myth was true. The beer goggles myth implies that as you drink more alcohol, you tend to find people more attractive than they objectively are. The graduate student hypothesized that those who drink alcohol (versus those who drink none) will have less accuracy in how attractive someone is.   
+
+Data
+
+* 32 participants
+
+Outcome (Dependent) variable:
+
+* Attractiveness Accuracy (ranges from 1-100)
+
+Predictor (Independent) variable:
+
+* Half of the participants drank 4 pints of beer and the other half drank water
+
+### Regression in R
+
+We run a regression analysis using the *lm()* function – lm stands for ‘linear model’  
+
+This function takes the general form:
+
+```{r}
+beer <- read.csv("goggles.csv")
+beer$alcohol <- relevel(beer$alcohol, ref = "None")
+names(beer)[3] <- "AttractivenessAccuracy"
+```
+
+```{r, eval = F, echo = T}
+newModel<-lm(outcome ~ predictor(s), data = dataFrame)
+```
+
+*Does drinking alcohol impact accuracy of attractiveness?*  
+
+Applying that formula to our example: 
+```{r, eval = T, echo = T}
+beer.mod <- lm(AttractivenessAccuracy ~ alcohol, data = beer)
+```
+
+
+We have created an object called beer.mod that contains the results of our analysis  
+
+We can show the object by executing:
+```{r, eval = T, echo = T}
+summary(beer.mod)
+```
+
+Wow! Okay! This looks different than when we had a numeric predictor last week. Let's break this down:  
+
+1. Our IV has two levels, "None" and "4 Pints". We can confirm this with the *levels()* command.  
+```{r, eval = T, echo = T}
+levels(beer$alcohol)
+```
+2. For a regression with a categorical IV, R automatically **dummy codes** the variable. This is how R is able to turn the words into meaningful numbers to run analyses. Dummy coding involves assigning a '0' and a '1' to the levels.  
+
+3. Running the *levels()* command is helpful because it will show you the order of your levels. The first level shown will be assigned a '0' and the second level will be assigned a '1'.  
+
+4. You can also tell which level was assigned a '0' because it will be the one "missing" from the output:
+```{r, eval = T, echo = T}
+summary(beer.mod)
+```
+
+5. Here we can see that "None" is missing which means it is the level that was assigned '0'. I keep putting "missing" in quotes because it is not actually missing! Remember how the intercept is the value of the DV when the IV is 0? Now 0 has a new meaning, "None"!  
+
+6. Therefore, the intercept IS the value of attractiveness accuracy for those who had "None" to drink. So, now we can say that **folks who had no alcohol to drink had an attractiveness accuracy of 63.75**.  
+
+7. *What about the slope?* As I mentioned earlier, this is the *adjustment* we make to our intercept when interpreting the other level, in this case, those who drank 4 pints of alcohol. We can say that **folks who drank 4 pints of alcohol were 17.19 *less* accurate in attractiveness ratings *in comparison* to those who drank nothing**. The p value is less than 0.05 so we can say this difference is significant.  
+
+8. It is important to note that when analyzing categorical variables, it will ALWAYS be in comparison to a certain level, as it is the only way to conduct meaningful analyses.  
+
+## Making Predictions with a Categorical IV
+
+When you have one categorical IV, the only predictions you are able to make are about each individual level. In this case, we have two levels (none vs 4 pints) so we can make two predictions.  
+
+#### Predicting the attractiveness accuracy of those who drank "None"
+
+In our saved model object, we are able to pull out the regression coefficients.
+
+```{r eval = T, echo = T}
+beer.mod$coefficients
+```
+
+We are also able to index them based on order:
+```{r, eval = T, echo = T}
+beer.mod$coefficients[1]
+beer.mod$coefficients[2]
+```
+
+Now, because the intercept IS the value of 0 ("None") for our DV of attractiveness, our predicted value is the intercept itself: 
+```{r, eval = T, echo = F}
+beer.mod$coefficients[1]
+```
+
+63.75 is the attractiveness accuracy for those who did not drink alcohol.  
+
+#### Predicting the attractiveness accuracy of those who drank "4 Pints"
+To make the prediction for our second level, all we have to do is add the two coefficients together:
+
+```{r, eval = T, echo = T}
+beer.mod$coefficients[1] + beer.mod$coefficients[2]
+```
+46.56 is the attractiveness accuracy for those who drank 4 pints of alcohol. Therefore, because it was significant, we can say folks who drink are less accurate in attractiveness ratings than those who do not drink.  
+
+*Fun fact: When you only have 1 Categorical IV, these predictions are roughly the same as the mean*
+```{r, eval = T, echo = T}
+psych::describeBy(beer$AttractivenessAccuracy, group = beer$alcohol)
+```
+
+## Multiple Regression for Categorical IVs: Main Effects Only
+
+What we have just gone through is called a *simple regression*, meaning we have one predictor (IV) and one outcome (DV) variable. More often than not, what we are interested in is not just one predictor, but the impact of multiple predictors (IVs) on an outcome (DV). This is called **Multiple Regression**.    
+
+We will first be looking at and interpreting main effects. A **main effect** (also called a simple effect) is the effect of one independent variable (predictor) on the dependent variable (outcome). *It ignores the effects of any other independent variables* (Krantz, 2019).    
+
+We will learn about multiple regression for **categorical variables** and how to interpret the findings through expanding our previous example.  
+
+The graduate student was interested in whether the beer goggle myth was true. With simple regression, they found that those who drank alcohol were significantly less accurate in attractiveness ratings than those who did not drink alcohol. Now the graduate student wants to know if gender (male vs female) itself impacts accuracy ratings, independent of drinking alcohol or not.  
+
+Every statistics teacher has their own philosophy on how to handle multiple categorical IVs. This is mine. Dummy coding will not give us the results we are looking for when we add on additional IVs. For the purposes of this course, I will not get into details on the why (but ask me in OH if you're interested). When you have more than one categorical IV (like your final project) you must do what is called **simple coding**. In simplest terms, simple coding is effective for 2+ categorical IVs because it keeps the integrity of the intercept.  
+
+The difference in the regression output between dummy coding and simple coding scheme is in the intercepts. In the dummy coding scheme, the intercept corresponds to the cell mean of the reference group, while in the simple coding scheme, the intercept corresponds to the mean of cell means. This is as deep as your understanding of the differences goes for this class. I will provide the following code which you can (and should) copy, paste, and adjust for your final project.
+
+Transforming from dummy to simple coding automatically:
+
+```{r, eval = T, echo = T}
+#First, create an object with your IV names EXACTLY as they are (case sensitive). 
+
+iv.names <- c("alcohol", "gender")
+
+
+for (i in 1:length(iv.names)) {
+
+tempvar <- iv.names[i]
+
+k <- length(levels(beer[[tempvar]]))
+
+#creating the contrast matrix manually by modifying the dummy coding scheme
+c<-contr.treatment(k)
+my.coding<-matrix(rep(1/k, (k* (k-1))), ncol=(k-1))
+my.simple<-c-my.coding
+
+contrasts(beer[[tempvar]])<-my.simple #if using, makesure to change "beer" to your dataset!
+}
+```
+
+Now let's look at our levels to see which is going to be our reference for each comparison:
+```{r, eval = T, echo= T}
+levels(beer$alcohol)
+levels(beer$gender)
+```
+
+"None" will be our reference group to compare "4 pints" to and "Female" will be our reference group to compare "Male" to.  
+
+### Running the Model
+
+Since we are still working on main effects, we simply add on our gender variable with a "+" as we did last week:
+
+```{r, eval = T, echo = T}
+beer.mod.2 <- lm(AttractivenessAccuracy ~ alcohol + gender, data = beer)
+```
+
+### Interpretation
+Now we run our summary:
+```{r, eval = T, echo = T}
+summary(beer.mod.2)
+```
+
+We have two IVs which means we have 2 main effects to interpret.  
+
+#### Main effect of alcohol on attractiveness accuracy  
+
+Let's re-run the *levels()* command to make sure we know which is our reference group.
+```{r, eval=T, echo = T}
+levels(beer$alcohol)
+```
+"None" is our reference group. The estimate is **-17.19**. This means that in comparison to "None" (our reference group), those who drank 4 pints were 17.19 points *less* accurate in attractiveness ratings (while taking into account/controlling for gender effects). This is significant with a p of less than 0.05. This is consistent with our first model. 
+
+#### Main effect of gender on attractiveness accuracy  
+
+Let's re-run the *levels()* command to make sure we know which is our reference group.
+```{r, eval=T, echo = T}
+levels(beer$gender)
+```
+"Female" is our reference group. The estimate is **-7.8**. This means that in comparison to "Female" (our reference group), those who are "Male" were 7.8 points *less* accurate in attractiveness ratings (while taking into account/controlling for alcohol consumption effects). This is *marginal/trending towards significance* with a p = 0.059. 
+
+## Final Project Tips
+
+This next example is the same format (2 IVs, 2 levels each, running an interaction model) as your final project. Be sure to come back and look at this code when the time comes. 
+
+## Multiple Regression for Categorical IVs: Interaction effects  
+
+The graduate student now wants to know if the alcohol and gender effects are *dependent* on each other for attractiveness accuracy. Specifically, does attractivness accuracy depend on a unique combination of the levels of both IVs? Do they **interact** in a unique way? Do the gender type and alcohol consumption level combine in some unique way on attractiveness accuracy?  This is an interaction effect.  
+
+The model is ran the same way except now we use "*" instead of "+" and R will run the interaction model for us. 
+
+```{r, eval = T, echo = T}
+beer.mod.3 <- lm(AttractivenessAccuracy ~ alcohol * gender, data = beer)
+```
+
+Now let's run the summary:
+```{r, eval = T, echo = T}
+summary(beer.mod.3)
+```
+
+The main effects (alcohol2 & gender 2) are interpreted the same as before. But now we can say they are qualified by a significant interaction (p < 0.05). That refers to our new line, "alcohol2:gender2".  
+
+How do we interpret this significant interaction? The best way is visually! We will use the *interaction.plot()* function from the interplot library.
+
+```{r, eval= T, echo = T}
+library(interplot)
+interaction.plot(beer$alcohol, beer$gender, beer$AttractivenessAccuracy, fun = mean)
+```
+
+Wow! Look at that!  
+
+**Interaction Effect Interpretation:** For Females, (see the straight line), they are high on attractiveness accuracy *regardless* of whether or not they have been drinking alcohol. There is an interaction effect of alcohol and gender such that for Males, drinking alcohol makes then less accurate in attractiveness ratings.  
+
+#### Descriptives 
+For your final project (and for future research) you'll alwats want to report descriptive statistics. Below is an example. 
+
+```{r, eval = T, echo = T}
+beer.descr <- aggregate(beer$AttractivenessAccuracy, by=list(beer$gender, beer$alcohol), FUN=mean)
+names(beer.descr)
+names(beer.descr) <- c("Gender", "Alcohol", "Mean Accuracy")
+beer.descr
+```
+
+
+

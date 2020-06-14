@@ -1,0 +1,291 @@
+---
+title: "Data & Distributions"
+date: "Week 2"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+css: custom.css
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+p{ /* Normal  */
+      font-size: 26px;
+      line-height: 1.2;
+  }
+ li{ /* Normal  */
+      font-size: 24px;
+      line-height: 1.2;
+       padding: 5px 0px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 38px;
+
+}
+h1 { /* Header 1 */
+  font-size: 48px;
+
+}
+h2 { /* Header 2 */
+    font-size: 36px;
+
+}
+h3 { /* Header 3 */
+  font-size: 30px;
+
+
+}
+
+h4 { /* Header 4 */
+  font-size: 28px;
+
+
+}
+
+code.r{ /* Code block */
+    font-size: 40px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 18px;
+}
+</style>
+
+```{r setup, echo=FALSE, cache=FALSE, warning = F, message = F}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+```{r, echo = F,cache=FALSE, warning = F, message = F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts=list(width.cutoff=50),tidy=TRUE)
+```
+## Aims
+
+Assumptions of parametric tests based on the normal distribution  
+
+Understand the assumption of normality  
+
+* Graphical displays
+* Skew
+* Kurtosis
+* Normality tests  
+
+Understand homogeneity of variance  
+
+* Levene’s test 
+
+Know how to correct problems in the data
+
+* Log, square root and reciprocal transformations
+
+## Assumptions
+
+Parametric tests based on the normal distribution assume:
+
+* Normally distributed
+  + Sampling distribution
+  + Residuals
+* Homogeneity of variance
+* Interval or ratio level data
+* Independent scores
+
+## Assessing Normality
+We don’t have access to the sampling distribution so we usually test the observed data  
+
+Central limit theorem
+
+* If N > 30, the sampling distribution is normal anyway
+
+Graphical displays
+
+* Q-Q plot 
+* Histogram
+
+Values of skew/kurtosis
+
+* 0 in a normal distribution
+* Convert to z (by dividing value by SE)
+
+Kolmogorov-Smirnov test
+
+* Tests if data differ from a normal distribution
+* Significant = non-normal data
+* Non-significant = normal data
+
+### Normality Example 1
+
+A biologist was worried about the potential health effects of music festivals. The biologist went to The Download Music Festival and measured the hygiene of 810 concert-goers over the three days of the festival.  
+
+Hygiene was measured using a standardized technique:  
+Score ranged from 0 to 4
+
+* 0 = you smell like a corpse rotting up a skunk’s arse
+* 4 = you smell of sweet roses on a fresh spring day
+
+#### The Q-Q Plot
+
+To draw a Q-Q plot of the hygiene scores for day 1 of the music festival:
+
+```{r, eval = F, echo = T}
+qqplot.day1 <- qplot(sample = dlf$day1, stat="qq")
+qqplot.day1
+```
+
+![](images/week2/image1.png)
+
+To draw a Q-Q plot of the hygiene scores for day 2 of the music festival:
+
+```{r, eval = F, echo = T}
+qqplot.day2 <- qplot(sample = dlf$day2, stat="qq")
+qqplot.day2
+```
+
+
+
+![](images/week2/image2.png)
+
+
+#### Assessing Skew and Kurtosis
+
+We can use *describe()* and *stat.desc()* with more than one variable at the same time using *cbind()*:
+
+```{r, eval = F, echo = T}
+
+describe(cbind(dlf$day1, dlf$day2, dlf$day3))
+
+stat.desc(cbind(dlf$day1, dlf$day2, dlf$day3), 
+          basic = FALSE, norm = TRUE) 
+
+```
+
+![](images/week2/image3.png)
+
+### Normality Example 2
+
+Performance on statistics exam  
+
+Participants: N = 100 students  
+
+Measures
+
+* **Exam:** first-year exam scores as a percentage
+* **Computer:** measure of computer literacy, %
+* **Lecture:** percentage of lectures attended
+* **Numeracy:** a measure of numerical ability out of 15
+* **Uni:** whether the student attended Sussex University or Duncetown University
+
+#### Assessing Normality
+
+##### Shapiro-Wilk tests
+
+Shapiro-Wilk test for normality for exam and numeracy for whole sample: If p-value > 0.05, implies that the distribution of the data are not significantly different from normal distribution. In other words, we can assume the normality. (good)
+
+```{r, eval = F, echo = T}
+shapiro.test(rexam$exam)
+shapiro.test(rexam$numeracy)
+```
+
+**Output:**
+
+![](images/week2/image4.png)
+
+Shapiro-Wilk test for exam and numeracy split by university:
+
+```{r, eval = F, echo = T}
+by(rexam$exam, rexam$uni, shapiro.test)
+by(rexam$numeracy, rexam$uni, shapiro.test)
+```
+
+**Output for exam:** 
+
+![](images/week2/image5.png)
+
+**Output for numeracy:** 
+
+![](images/week2/image6.png)
+
+##### Q-Q Plots
+![](images/week2/image7.png)
+
+## Assessing Homogeneity of Variance
+
+Graphs  
+
+Levene’s test
+
+* Tests if variances in different groups are the same
+* Significant = variances not equal (bad)
+* Non-significant = variances are equal  (good)
+
+
+
+### Graphs
+
+![](images/week2/image8.png)
+
+### Assessing Homogeneity of Variance with R 
+
+Use the leveneTest() function from the car package. Levene’s test for the exam and numeracy scores:
+
+```{r, eval = F, echo = T}
+leveneTest(rexam$exam, rexam$uni)
+leveneTest(rexam$numeracy, rexam$uni)
+```
+
+**Output:**
+![](images/week2/image9.png)
+
+## Correcting Data Problems
+
+**Log transformation (log(Xi)):** Reduce positive skew.  
+
+```{r, eval = F, echo = T}
+dlf$logday1 <- log(dlf$day1)
+```
+
+**Square root transformation (√Xi):** Also reduces positive skew. Can also be useful for stabilizing variance.  
+
+```{r, eval = F, echo = T}
+dlf$sqrtday1 <- sqrt(day1)
+```
+
+**Reciprocal transformation (1/ Xi):** Dividing 1 by each score also reduces the impact of large scores. This transformation reverses the scores; you can avoid this by reversing the scores before the transformation, 1/(XHighest – Xi).  
+```{r, eval = F, echo = T}
+dlf$recday1 <- 1/(dlf$day1) 
+```
+
+### The Effect of Transformations 
+
+![](images/week2/image10.png)
+
+### To Transform … Or Not
+
+Transforming the data helps as often as it hinders the accuracy of F (Games & Lucas, 1966)  
+
+Games (1984):
+
+* The central limit theorem: sampling distribution will be normal in samples > 40 anyway.
+* Transforming the data changes the hypothesis being tested
+  + e.g. when using a log transformation and comparing means, you change from comparing arithmetic means to comparing geometric means
+* In small samples it is tricky to determine normality one way or another.
+* The consequences for the statistical model of applying the ‘wrong’ transformation could be worse than the consequences of analysing the untransformed scores.
+
