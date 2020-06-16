@@ -12,7 +12,8 @@ view: 4
 header:
   caption: ""
   image: ""
----
+
+
 
 @article{lee2019prevalence,
   title={On the prevalence of racial discrimination in the United States},
@@ -23,3 +24,5 @@ header:
   year={2019},
   publisher={Public Library of Science}
 }
+---
+
