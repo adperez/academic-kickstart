@@ -90,7 +90,7 @@ address = {street = "2121 Berkeley Way West", city = "Berkeley", region = "CA", 
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
-coordinates = {latitude = "37.871853", longitude = "-122.258423"}
+coordinates = {latitude = "37.8718711", longitude = "-122.2776232"}
 
 # Directions for visitors to locate you.
 directions = "Enter Building and head to Floor 3"
