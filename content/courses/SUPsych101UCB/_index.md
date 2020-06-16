@@ -5,7 +5,7 @@ summary: Lecture Notes and Activities for Psych 101 Summer Session C, 2020 taugh
 weight: 1
 
 # Page metadata.
-title: Overview
+title: Psych 101 Resources
 date: "2018-09-09T00:00:00Z"
 lastmod: "2018-09-09T00:00:00Z"
 draft: false  # Is this a draft? true/false
@@ -23,12 +23,21 @@ menu:
 
 ## Lecture Notes
 
-This feature can be used for publishing content such as:
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w1"> Week 1 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w2"> Week 2 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w3"> Week 3 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w4"> Week 4 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w5"> Week 5 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w6"> Week 6 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w7"> Week 7 </a>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w8"> Week 8 </a>
 
-* **Online courses**
-* **Project or software documentation**
-* **Tutorials**
 
-The `courses` folder may be renamed. For example, we can rename it to `docs` for software/project documentation or `tutorials` for creating an online course.
+## Lecture Code
 
+Lecture Code will be displayed here
+
+## Assignments
+
+Assignments will be displayed here
 
