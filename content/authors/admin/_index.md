@@ -56,7 +56,7 @@ social:
   link: https://github.com/
  - icon: cv
    icon_pack: ai
-   link: files/cv.pdf
+   link: https://berkeley.box.com/s/ckvg049a482n2zh7mxeg9vxvxver9s93
    
    
 # Link to a PDF of your resume/CV from the About widget.
