@@ -18,24 +18,24 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include Implicit Biases and Measurement, Racial Disparities in Education, and Intergroup Processes
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Implicit Biases
+- Racial Disparities in Education
+- Intergroup Processes
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Social Psychology
+    institution: UC Berkeley
+    year: 2021
+  - course: MA in Psychology
+    institution: UC Berkeley
+    year: 2019
+  - course: BA in Psychology
+    institution: UC Berkeleyy
+    year: 2015
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -47,18 +47,18 @@ social:
   link: '#contact'  # For a direct email link, use "mailto:adp@berkeley.edu".
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=xvzZY2wAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
+ - icon: cv
+   icon_pack: ai
+   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
@@ -70,6 +70,7 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Amanda D. Perez is a Doctoral Candidate in Social Psychology at UC Berkeley. She is also a professor of Psychology at DVC and UC Berkeley. Her research interests include include Implicit Biases and Measurement, Racial Disparities in Education, and Intergroup Processes
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+
+Through all of my experiences and training I have comfort teaching a wide breadth of psychological topics and courses such as: introduction to psychology, research methods, statistics, intervention psychology, social psychology, cultural psychology, personality psychology, positive psychology, and stigma and prejudice. Further, I have extensive experience being on the instructional team for a Massive Open Online Course (MOOC) and feel comfortable creating and teaching a course on an online platform.
