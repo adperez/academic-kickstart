@@ -1,7 +1,7 @@
 ---
 # Course title, summary, and position.
-linktitle: Research and Data Analysis
-summary: Learn how to use Academic's docs layout for publishing online courses, software documentation, and tutorials.
+linktitle: Research and Data Analysis, Summer Session C
+summary: Lecture Notes and Activities for Psych 101 Summer Session C, 2020 taught by Professor Perez.
 weight: 1
 
 # Page metadata.
