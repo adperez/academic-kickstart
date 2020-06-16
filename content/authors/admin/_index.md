@@ -51,10 +51,10 @@ social:
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=xvzZY2wAAAAJ
-  - icon: github
+- icon: github
   icon_pack: fab
   link: https://github.com/
-  - icon: cv
+- icon: cv
   icon_pack: ai
   link: https://berkeley.box.com/s/ckvg049a482n2zh7mxeg9vxvxver9s93
 
