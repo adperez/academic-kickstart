@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   title = "Data Science Track in R"
   url = ""
   certificate_url = "https://www.datacamp.com"
-  date_start = "2019"
+  date_start = "June 2019"
   date_end = ""
   description = ""
 
