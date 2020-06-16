@@ -54,8 +54,6 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/
-# Link to a PDF of your resume/CV from the About widget.
-# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
  - icon: cv
    icon_pack: ai
    link: https://berkeley.box.com/s/ckvg049a482n2zh7mxeg9vxvxver9s93
