@@ -23,6 +23,7 @@ menu:
 
 ## Lecture Notes
 
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/w1rm_overview"> Key Terms </a> </br>
 <a href = "https://www.perezamanda.com/courses/supsych101ucb/w1"> Week 1 </a> </br>
 <a href = "https://www.perezamanda.com/courses/supsych101ucb/w2"> Week 2 </a> </br>
 <a href = "https://www.perezamanda.com/courses/supsych101ucb/w3"> Week 3 </a> </br>
