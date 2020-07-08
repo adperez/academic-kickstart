@@ -36,9 +36,9 @@ menu:
 
 ## Lecture Code
 
-<a href = "https://www.perezamanda.com/courses/supsych101ucb/W1_Tues.pdf"> Week 1 Tuesday</a> <a href = "https://www.perezamanda.com/courses/supsych101ucb/W1_Thursday.pdf"> Week 1 Thursday</a> </br>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/W1_Tues.pdf"> Week 1 Tuesday</a> & <a href = "https://www.perezamanda.com/courses/supsych101ucb/W1_Thursday.pdf"> Week 1 Thursday</a> </br>
 
-<a href = "https://www.perezamanda.com/courses/supsych101ucb/W2_Tues.pdf"> Week 2 Tuesday</a> <a href = "https://www.perezamanda.com/courses/supsych101ucb/W2_Thursday.pdf"> Week 2 Thursday</a> </br>
+<a href = "https://www.perezamanda.com/courses/supsych101ucb/W2_Tues.pdf"> Week 2 Tuesday</a> & <a href = "https://www.perezamanda.com/courses/supsych101ucb/W2_Thursday.pdf"> Week 2 Thursday</a> </br>
 
 <a href = "https://www.perezamanda.com/courses/supsych101ucb/W3_Tuesday.pdf"> Week 3 Tuesday</a>  </br>
 
